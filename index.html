@@ -3,224 +3,460 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Actualización Datos Cliente - SAGRILAFT</title>
+    <title>Formulario SAGRILAFT - Actualización de Datos</title>
     <style>
         :root {
-            --primary-color: #2563eb; /* Azul corporativo estándar */
-            --bg-color: #f3f4f6;
+            --primary-color: #0f172a; /* Azul oscuro corporativo */
+            --accent-color: #2563eb; /* Azul brillante para acciones */
+            --bg-color: #f8fafc;
             --card-bg: #ffffff;
-            --text-color: #1f2937;
-            --border-color: #e5e7eb;
+            --text-color: #334155;
+            --border-color: #e2e8f0;
+            --locked-bg: #f1f5f9;
         }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
             background-color: var(--bg-color);
             color: var(--text-color);
             margin: 0;
-            padding: 20px;
-            display: flex;
-            justify-content: center;
-            line-height: 1.6;
+            padding: 40px 20px;
+            line-height: 1.5;
         }
 
         .container {
             background-color: var(--card-bg);
-            width: 100%;
-            max-width: 640px;
-            padding: 40px;
-            border-radius: 12px;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            max-width: 800px;
+            margin: 0 auto;
+            border-radius: 8px;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            border: 1px solid var(--border-color);
         }
 
+        /* HEADER */
         .header {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 30px;
             text-align: center;
-            margin-bottom: 30px;
+            border-bottom: 4px solid var(--accent-color);
         }
 
-        .logo {
-            max-height: 80px;
-            margin-bottom: 20px;
+        .header h1 {
+            font-size: 22px;
+            margin: 0 0 10px 0;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
 
-        h1 {
-            font-size: 24px;
-            font-weight: 700;
-            margin-bottom: 10px;
-            color: #111827;
+        .header h2 {
+            font-size: 16px;
+            font-weight: 400;
+            margin: 0;
+            opacity: 0.9;
         }
 
-        p.description {
-            color: #6b7280;
+        .logo-placeholder {
+            background-color: rgba(255,255,255,0.1);
+            width: 120px;
+            height: 60px;
+            margin: 0 auto 15px auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 4px;
+            font-size: 12px;
+            color: rgba(255,255,255,0.7);
+            border: 1px dashed rgba(255,255,255,0.3);
+        }
+
+        .intro-text {
+            padding: 20px 40px;
+            background-color: #fffbeb;
+            border-bottom: 1px solid #fcd34d;
             font-size: 14px;
-            margin-bottom: 30px;
+            color: #92400e;
+            text-align: justify;
         }
 
-        .form-section {
-            margin-bottom: 25px;
-            border-bottom: 1px solid var(--border-color);
-            padding-bottom: 25px;
+        /* FORM SECTIONS */
+        .form-content {
+            padding: 40px;
         }
 
-        .form-section:last-child {
-            border-bottom: none;
+        .section {
+            margin-bottom: 40px;
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--border-color);
+        }
+
+        .section-number {
+            background-color: var(--primary-color);
+            color: white;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 14px;
+            margin-right: 12px;
         }
 
         .section-title {
-            font-size: 16px;
-            font-weight: 600;
-            color: #374151;
-            margin-bottom: 15px;
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--primary-color);
             text-transform: uppercase;
-            letter-spacing: 0.05em;
+        }
+
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .grid-3 {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 20px;
         }
 
         .form-group {
-            margin-bottom: 20px;
+            margin-bottom: 15px;
         }
 
         label {
             display: block;
-            font-size: 14px;
-            font-weight: 500;
+            font-size: 13px;
+            font-weight: 600;
             margin-bottom: 6px;
-            color: #374151;
+            color: #475569;
         }
 
         input[type="text"],
         input[type="email"],
-        input[type="date"],
         input[type="tel"],
+        input[type="date"],
         select {
             width: 100%;
-            padding: 10px 12px;
-            border: 1px solid var(--border-color);
+            padding: 10px;
+            border: 1px solid #cbd5e1;
             border-radius: 6px;
-            font-size: 15px;
-            box-sizing: border-box; /* Fix padding issues */
-            transition: border-color 0.2s;
+            font-size: 14px;
+            transition: all 0.2s;
+            box-sizing: border-box;
         }
 
-        input:focus {
+        input:focus, select:focus {
             outline: none;
-            border-color: var(--primary-color);
+            border-color: var(--accent-color);
             box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
         }
 
-        /* Estilo especial para campos de solo lectura (Simulando la llave de la BD) */
-        input.readonly-field {
-            background-color: #f9fafb;
-            color: #6b7280;
+        /* LOCKED FIELDS (SYSTEM KEYS) */
+        .field-locked {
+            background-color: var(--locked-bg);
+            color: #64748b;
             cursor: not-allowed;
-            border-color: #e5e7eb;
+            border-color: #e2e8f0;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="%2394a3b8" viewBox="0 0 16 16"><path d="M8 1a2 2 0 0 1 2 2v4H6V3a2 2 0 0 1 2-2zm3 6V3a3 3 0 0 0-6 0v4a2 2 0 0 0-2 2v5a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2z"/></svg>');
+            background-repeat: no-repeat;
+            background-position: right 10px center;
         }
 
-        .file-upload-area {
-            border: 2px dashed var(--border-color);
-            border-radius: 8px;
-            padding: 20px;
-            text-align: center;
-            cursor: pointer;
-            transition: background 0.2s;
+        .system-id-badge {
+            font-size: 10px;
+            background: #e2e8f0;
+            padding: 2px 6px;
+            border-radius: 4px;
+            color: #64748b;
+            margin-left: 5px;
         }
 
-        .file-upload-area:hover {
-            background-color: #f9fafb;
-            border-color: var(--primary-color);
+        /* CHECKBOX GROUPS */
+        .checkbox-group {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            background: #f8fafc;
+            padding: 10px;
+            border-radius: 6px;
+            border: 1px solid #e2e8f0;
         }
-
-        .upload-icon {
-            font-size: 24px;
-            margin-bottom: 5px;
-            color: #9ca3af;
-        }
-
-        .upload-text {
+        
+        .checkbox-item {
+            display: flex;
+            align-items: center;
             font-size: 13px;
-            color: #6b7280;
+        }
+        
+        .checkbox-item input {
+            margin-right: 8px;
+        }
+
+        /* UPLOAD SECTION */
+        .upload-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px;
+            border: 1px solid #e2e8f0;
+            border-radius: 6px;
+            margin-bottom: 10px;
+            background: white;
+        }
+
+        .upload-label {
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        .upload-btn {
+            background-color: #f1f5f9;
+            color: #334155;
+            padding: 6px 12px;
+            border-radius: 4px;
+            font-size: 12px;
+            border: 1px solid #cbd5e1;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .upload-btn:hover {
+            background-color: #e2e8f0;
+            border-color: #94a3b8;
+        }
+
+        /* BUTTON */
+        .submit-container {
+            margin-top: 30px;
+            text-align: center;
         }
 
         .btn-submit {
-            background-color: var(--primary-color);
+            background-color: var(--accent-color);
             color: white;
             border: none;
-            width: 100%;
-            padding: 14px;
+            padding: 15px 40px;
             font-size: 16px;
             font-weight: 600;
             border-radius: 6px;
             cursor: pointer;
-            transition: background 0.2s;
+            box-shadow: 0 4px 6px -1px rgba(37, 99, 235, 0.3);
+            transition: transform 0.1s;
         }
 
         .btn-submit:hover {
             background-color: #1d4ed8;
+            transform: translateY(-1px);
         }
 
-        .badge-locked {
-            display: inline-block;
-            background-color: #e5e7eb;
-            color: #374151;
-            font-size: 10px;
-            padding: 2px 6px;
-            border-radius: 4px;
-            margin-left: 8px;
-            vertical-align: middle;
+        @media (max-width: 600px) {
+            .grid-2, .grid-3 { grid-template-columns: 1fr; }
+            .container { border-radius: 0; border: none; }
+            body { padding: 0; }
         }
     </style>
 </head>
 <body>
 
-    <div class="container">
-        <div class="header">
-            <img src="img/logo.png" alt="Logo Empresa" class="logo" onerror="this.style.display='none'; document.getElementById('alt-logo').style.display='block';">
-            <h2 id="alt-logo" style="display:none; color:var(--primary-color);">LOGO EMPRESA</h2>
-            
-            <h1>Actualización de Datos SAGRILAFT</h1>
-            <p class="description">
-                Para dar cumplimiento a la normativa vigente, solicitamos amablemente verificar y actualizar la siguiente información. 
-                Los campos marcados en gris no pueden ser modificados para preservar su identificación en nuestro sistema.
-            </p>
-        </div>
+<div class="container">
+    <div class="header">
+        <div class="logo-placeholder"><img src="img/logo.png" style="max-width:100%; max-height:100%;"></div>
+        <h1>Régimen de Medidas Mínimas Sagrilaft</h1>
+        <h2>Formato de Conocimiento de Clientes</h2>
+    </div>
 
-        <form onsubmit="event.preventDefault(); alert('¡Simulación completada! En el sistema real, estos datos se guardarían directamente en Airtable manteniendo el ID del cliente.');">
-            
-            <div class="form-section">
-                <div class="section-title">Información de Identificación</div>
-                
+    <div class="intro-text">
+        <strong>Estimado Cliente:</strong> Amablemente solicitamos revisar y actualizar la información precargada en este formato. Los campos marcados con candado corresponden a su identificación en nuestro sistema y no pueden ser modificados.
+    </div>
+
+    <form class="form-content" onsubmit="event.preventDefault(); alert('Simulación: Los datos se actualizarían en la fila ID 286 de Airtable.');">
+        
+        <div class="section">
+            <div class="grid-3">
                 <div class="form-group">
-                    <label>Razón Social <span class="badge-locked">Bloqueado</span></label>
-                    <input type="text" class="readonly-field" value="MUNDO ESPUMAS SAS" readonly>
+                    <label>Fecha de Diligenciamiento</label>
+                    <input type="date" value="2025-11-20">
                 </div>
-
-                <div class="form-row" style="display: flex; gap: 15px;">
-                    <div class="form-group" style="flex: 1;">
-                        <label>NIT / Cédula <span class="badge-locked">Bloqueado</span></label>
-                        <input type="text" class="readonly-field" value="830104201" readonly>
-                    </div>
-                    <div class="form-group" style="flex: 1;">
-                        <label>ID Interno (Sistema) <span class="badge-locked">No Tocar</span></label>
-                        <input type="text" class="readonly-field" value="286" readonly title="Este ID asegura que al exportar la data, coincida con tu plataforma original.">
-                    </div>
+                <div class="form-group">
+                    <label>ID Sistema (Interno) <span class="system-id-badge">Wo-286</span></label>
+                    <input type="text" value="286" class="field-locked" readonly title="Primary Key en Airtable">
+                </div>
+                <div class="form-group">
+                    <label>Código Formato</label>
+                    <input type="text" value="SPI-001 / V.1" class="field-locked" readonly style="text-align: center;">
                 </div>
             </div>
 
-            <div class="form-section">
-                <div class="section-title">Datos de Contacto y Representación</div>
-                
-                <div class="form-group">
-                    <label>Dirección Física</label>
-                    <input type="text" value="CARRERA 68 D # 13 - 61" placeholder="Actualice su dirección">
+            <div class="form-group">
+                <label>Tipo de Servicio a Contratar</label>
+                <div class="checkbox-group">
+                    <label class="checkbox-item"><input type="checkbox" checked> Actualización de Datos</label>
+                    <label class="checkbox-item"><input type="checkbox"> Propiedad Intelectual</label>
+                    <label class="checkbox-item"><input type="checkbox"> Asuntos Regulatorios</label>
+                    <label class="checkbox-item"><input type="checkbox"> Derecho Corporativo</label>
                 </div>
+            </div>
 
+            <div class="form-group">
+                <label>Vinculación</label>
+                <select>
+                    <option value="PJ" selected>Persona Jurídica</option>
+                    <option value="PN">Persona Natural</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-header">
+                <div class="section-number">I</div>
+                <div class="section-title">Información General</div>
+            </div>
+
+            <div class="grid-2">
                 <div class="form-group">
-                    <label>Ciudad Principal</label>
+                    <label>Razón Social / Nombre Completo</label>
+                    <input type="text" value="MUNDO ESPUMAS SAS">
+                </div>
+                <div class="form-group">
+                    <label>Tipo de Identificación</label>
+                    <select class="field-locked" disabled>
+                        <option selected>NIT</option>
+                        <option>Cédula de Ciudadanía</option>
+                        <option>Cédula de Extranjería</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="grid-2">
+                <div class="form-group">
+                    <label>Número de Identificación <span class="system-id-badge">Bloqueado</span></label>
+                    <input type="text" value="830104201" class="field-locked" readonly>
+                </div>
+                <div class="form-group">
+                    <label>Dígito Verificación</label>
+                    <input type="text" value="2" class="field-locked" readonly style="width: 50px;">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>Tipo de Empresa</label>
+                <div class="checkbox-group">
+                    <label class="checkbox-item"><input type="radio" name="tipo_emp" checked> Privada</label>
+                    <label class="checkbox-item"><input type="radio" name="tipo_emp"> Pública</label>
+                    <label class="checkbox-item"><input type="radio" name="tipo_emp"> Mixta / Otra</label>
+                </div>
+            </div>
+
+            <div class="grid-2">
+                <div class="form-group">
+                    <label>Dirección Principal</label>
+                    <input type="text" value="CARRERA 68 D # 13 - 61">
+                </div>
+                <div class="form-group">
+                    <label>Teléfono / Celular</label>
+                    <input type="tel" value="3101234567">
+                </div>
+            </div>
+
+            <div class="grid-3">
+                <div class="form-group">
+                    <label>Ciudad</label>
                     <input type="text" value="Bogotá D.C.">
                 </div>
+                <div class="form-group">
+                    <label>Departamento</label>
+                    <input type="text" value="Cundinamarca">
+                </div>
+                <div class="form-group">
+                    <label>Actividad Económica (CIIU)</label>
+                    <input type="text" placeholder="Ej. 4752">
+                </div>
+            </div>
 
-                <div class="form-row" style="display: flex; gap: 15px;">
-                    <div class="form-group" style="flex: 1;">
-                        <label>Correo Electrónico (Notificaciones)</label>
-                        <input type="email" value="contacto@mundoespumas.com">
-                    </div>
-                    <div class="form-group" style="flex: 1;">
+            <div class="form-group">
+                <label>Correo Electrónico (Para Notificaciones)</label>
+                <input type="email" value="contacto@mundoespumas.com">
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-header">
+                <div class="section-number">II</div>
+                <div class="section-title">Representación Legal</div>
+            </div>
+
+            <div class="grid-2">
+                <div class="form-group">
+                    <label>Nombre Representante Legal</label>
+                    <input type="text" placeholder="Nombre completo" value="Juan Pérez">
+                </div>
+                <div class="form-group">
+                    <label>Documento de Identidad (Rep. Legal)</label>
+                    <input type="text" placeholder="Número de cédula">
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-header">
+                <div class="section-number">III</div>
+                <div class="section-title">Anexos Requeridos</div>
+            </div>
+            <p style="font-size: 13px; color: #64748b; margin-bottom: 20px;">
+                Por favor cargue los documentos vigentes. Si ya los envió recientemente y están vigentes, puede omitir la carga.
+            </p>
+
+            <div class="upload-row">
+                <div class="upload-label">1. Certificado Cámara de Comercio (< 30 días)</div>
+                <button type="button" class="upload-btn">📄 Seleccionar Archivo</button>
+            </div>
+
+            <div class="upload-row">
+                <div class="upload-label">2. Copia del RUT (Actualizado)</div>
+                <button type="button" class="upload-btn">📄 Seleccionar Archivo</button>
+            </div>
+
+            <div class="upload-row">
+                <div class="upload-label">3. Copia Cédula Rep. Legal</div>
+                <button type="button" class="upload-btn">📄 Seleccionar Archivo</button>
+            </div>
+
+            <div class="upload-row">
+                <div class="upload-label">4. Estados Financieros (Último año fiscal)</div>
+                <button type="button" class="upload-btn">📄 Seleccionar Archivo</button>
+            </div>
+
+            <div class="upload-row">
+                <div class="upload-label">5. Declaración de Renta (Último año)</div>
+                <button type="button" class="upload-btn">📄 Seleccionar Archivo</button>
+            </div>
+
+            <div class="upload-row">
+                <div class="upload-label">6. Certificación Bancaria (< 90 días)</div>
+                <button type="button" class="upload-btn">📄 Seleccionar Archivo</button>
+            </div>
+        </div>
+
+        <div class="submit-container">
+            <button type="submit" class="btn-submit">Validar y Actualizar Información</button>
+            <p style="font-size: 12px; color: #94a3b8; margin-top: 15px;">
+                Al hacer clic, certifico que la información suministrada es veraz y autorizo su tratamiento conforme a la política de datos de SPI SAS.
+            </p>
+        </div>
+
+    </form>
+</div>
+
+</body>
+</html>
