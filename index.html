@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Actualización Datos Cliente - SAGRILAFT</title>
+    <style>
+        :root {
+            --primary-color: #2563eb; /* Azul corporativo estándar */
+            --bg-color: #f3f4f6;
+            --card-bg: #ffffff;
+            --text-color: #1f2937;
+            --border-color: #e5e7eb;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            line-height: 1.6;
+        }
+
+        .container {
+            background-color: var(--card-bg);
+            width: 100%;
+            max-width: 640px;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .logo {
+            max-height: 80px;
+            margin-bottom: 20px;
+        }
+
+        h1 {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: #111827;
+        }
+
+        p.description {
+            color: #6b7280;
+            font-size: 14px;
+            margin-bottom: 30px;
+        }
+
+        .form-section {
+            margin-bottom: 25px;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 25px;
+        }
+
+        .form-section:last-child {
+            border-bottom: none;
+        }
+
+        .section-title {
+            font-size: 16px;
+            font-weight: 600;
+            color: #374151;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            font-size: 14px;
+            font-weight: 500;
+            margin-bottom: 6px;
+            color: #374151;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="date"],
+        input[type="tel"],
+        select {
+            width: 100%;
+            padding: 10px 12px;
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            font-size: 15px;
+            box-sizing: border-box; /* Fix padding issues */
+            transition: border-color 0.2s;
+        }
+
+        input:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+        }
+
+        /* Estilo especial para campos de solo lectura (Simulando la llave de la BD) */
+        input.readonly-field {
+            background-color: #f9fafb;
+            color: #6b7280;
+            cursor: not-allowed;
+            border-color: #e5e7eb;
+        }
+
+        .file-upload-area {
+            border: 2px dashed var(--border-color);
+            border-radius: 8px;
+            padding: 20px;
+            text-align: center;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .file-upload-area:hover {
+            background-color: #f9fafb;
+            border-color: var(--primary-color);
+        }
+
+        .upload-icon {
+            font-size: 24px;
+            margin-bottom: 5px;
+            color: #9ca3af;
+        }
+
+        .upload-text {
+            font-size: 13px;
+            color: #6b7280;
+        }
+
+        .btn-submit {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            width: 100%;
+            padding: 14px;
+            font-size: 16px;
+            font-weight: 600;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .btn-submit:hover {
+            background-color: #1d4ed8;
+        }
+
+        .badge-locked {
+            display: inline-block;
+            background-color: #e5e7eb;
+            color: #374151;
+            font-size: 10px;
+            padding: 2px 6px;
+            border-radius: 4px;
+            margin-left: 8px;
+            vertical-align: middle;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="header">
+            <img src="img/logo.png" alt="Logo Empresa" class="logo" onerror="this.style.display='none'; document.getElementById('alt-logo').style.display='block';">
+            <h2 id="alt-logo" style="display:none; color:var(--primary-color);">LOGO EMPRESA</h2>
+            
+            <h1>Actualización de Datos SAGRILAFT</h1>
+            <p class="description">
+                Para dar cumplimiento a la normativa vigente, solicitamos amablemente verificar y actualizar la siguiente información. 
+                Los campos marcados en gris no pueden ser modificados para preservar su identificación en nuestro sistema.
+            </p>
+        </div>
+
+        <form onsubmit="event.preventDefault(); alert('¡Simulación completada! En el sistema real, estos datos se guardarían directamente en Airtable manteniendo el ID del cliente.');">
+            
+            <div class="form-section">
+                <div class="section-title">Información de Identificación</div>
+                
+                <div class="form-group">
+                    <label>Razón Social <span class="badge-locked">Bloqueado</span></label>
+                    <input type="text" class="readonly-field" value="MUNDO ESPUMAS SAS" readonly>
+                </div>
+
+                <div class="form-row" style="display: flex; gap: 15px;">
+                    <div class="form-group" style="flex: 1;">
+                        <label>NIT / Cédula <span class="badge-locked">Bloqueado</span></label>
+                        <input type="text" class="readonly-field" value="830104201" readonly>
+                    </div>
+                    <div class="form-group" style="flex: 1;">
+                        <label>ID Interno (Sistema) <span class="badge-locked">No Tocar</span></label>
+                        <input type="text" class="readonly-field" value="286" readonly title="Este ID asegura que al exportar la data, coincida con tu plataforma original.">
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-section">
+                <div class="section-title">Datos de Contacto y Representación</div>
+                
+                <div class="form-group">
+                    <label>Dirección Física</label>
+                    <input type="text" value="CARRERA 68 D # 13 - 61" placeholder="Actualice su dirección">
+                </div>
+
+                <div class="form-group">
+                    <label>Ciudad Principal</label>
+                    <input type="text" value="Bogotá D.C.">
+                </div>
+
+                <div class="form-row" style="display: flex; gap: 15px;">
+                    <div class="form-group" style="flex: 1;">
+                        <label>Correo Electrónico (Notificaciones)</label>
+                        <input type="email" value="contacto@mundoespumas.com">
+                    </div>
+                    <div class="form-group" style="flex: 1;">
