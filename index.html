@@ -3,80 +3,79 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Formulario SAGRILAFT - Actualización de Datos</title>
+    <title>Formulario SAGRILAFT - SPI</title>
     <style>
         :root {
-            --primary-color: #0f172a; /* Azul oscuro corporativo */
-            --accent-color: #2563eb; /* Azul brillante para acciones */
-            --bg-color: #f8fafc;
-            --card-bg: #ffffff;
-            --text-color: #334155;
-            --border-color: #e2e8f0;
-            --locked-bg: #f1f5f9;
+            /* Paleta de colores ajustada para contraste con el logo */
+            --primary-dark: #0f172a; /* Azul noche para textos principales y acentos */
+            --primary-blue: #2563eb; /* Azul brillante para botones y focos */
+            --bg-body: #eef2f6; /* Fondo general un poco más gris para que la tarjeta resalte */
+            --bg-card: #ffffff; /* Fondo blanco puro para el formulario */
+            --text-body: #475569; /* Color de texto general */
+            --border-light: #e2e8f0;
+            --locked-bg: #f8fafc; /* Fondo muy claro para campos bloqueados */
         }
 
         body {
             font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-            background-color: var(--bg-color);
-            color: var(--text-color);
+            background-color: var(--bg-body);
+            color: var(--text-body);
             margin: 0;
-            padding: 40px 20px;
+            padding: 30px 15px;
             line-height: 1.5;
         }
 
         .container {
-            background-color: var(--card-bg);
+            background-color: var(--bg-card);
             max-width: 800px;
             margin: 0 auto;
-            border-radius: 8px;
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            border-radius: 12px;
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.08);
             overflow: hidden;
-            border: 1px solid var(--border-color);
         }
 
-        /* HEADER */
+        /* --- HEADER AJUSTADO PARA CONTRASTE --- */
         .header {
-            background-color: var(--primary-color);
-            color: white;
-            padding: 30px;
+            background-color: #ffffff; /* Fondo blanco para que el logo oscuro resalte */
+            padding: 35px 30px 25px;
             text-align: center;
-            border-bottom: 4px solid var(--accent-color);
+            /* Sutil sombra para separar el header del resto en lugar de borde grueso */
+            box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+            border-bottom: 1px solid var(--border-light);
+        }
+
+        .header-logo {
+            /* Ajusta la altura máxima según necesites, 80px se ve bien equilibrado */
+            max-height: 85px;
+            width: auto;
+            margin-bottom: 20px;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
         }
 
         .header h1 {
-            font-size: 22px;
-            margin: 0 0 10px 0;
+            font-size: 24px;
+            margin: 0 0 8px 0;
             text-transform: uppercase;
             letter-spacing: 0.5px;
+            color: var(--primary-dark); /* Título en color oscuro */
+            font-weight: 800;
         }
 
         .header h2 {
             font-size: 16px;
-            font-weight: 400;
+            font-weight: 500;
             margin: 0;
-            opacity: 0.9;
-        }
-
-        .logo-placeholder {
-            background-color: rgba(255,255,255,0.1);
-            width: 120px;
-            height: 60px;
-            margin: 0 auto 15px auto;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 4px;
-            font-size: 12px;
-            color: rgba(255,255,255,0.7);
-            border: 1px dashed rgba(255,255,255,0.3);
+            color: var(--text-body);
         }
 
         .intro-text {
             padding: 20px 40px;
-            background-color: #fffbeb;
-            border-bottom: 1px solid #fcd34d;
+            background-color: #fff7ed; /* Tono naranja muy suave para alerta */
+            border-left: 4px solid #f97316;
             font-size: 14px;
-            color: #92400e;
+            color: #9a3412;
             text-align: justify;
         }
 
@@ -86,35 +85,35 @@
         }
 
         .section {
-            margin-bottom: 40px;
+            margin-bottom: 45px;
         }
 
         .section-header {
             display: flex;
             align-items: center;
-            margin-bottom: 20px;
-            padding-bottom: 10px;
-            border-bottom: 2px solid var(--border-color);
+            margin-bottom: 25px;
+            padding-bottom: 12px;
+            border-bottom: 2px solid var(--border-light);
         }
 
         .section-number {
-            background-color: var(--primary-color);
+            background-color: var(--primary-dark);
             color: white;
-            width: 28px;
-            height: 28px;
-            border-radius: 50%;
+            width: 32px;
+            height: 32px;
+            border-radius: 8px; /* Un poco más cuadrado para toque moderno */
             display: flex;
             align-items: center;
             justify-content: center;
             font-weight: bold;
-            font-size: 14px;
-            margin-right: 12px;
+            font-size: 15px;
+            margin-right: 15px;
         }
 
         .section-title {
             font-size: 18px;
             font-weight: 700;
-            color: var(--primary-color);
+            color: var(--primary-dark);
             text-transform: uppercase;
         }
 
@@ -131,15 +130,15 @@
         }
 
         .form-group {
-            margin-bottom: 15px;
+            margin-bottom: 18px;
         }
 
         label {
             display: block;
             font-size: 13px;
             font-weight: 600;
-            margin-bottom: 6px;
-            color: #475569;
+            margin-bottom: 7px;
+            color: var(--primary-dark);
         }
 
         input[type="text"],
@@ -148,38 +147,43 @@
         input[type="date"],
         select {
             width: 100%;
-            padding: 10px;
+            padding: 12px;
             border: 1px solid #cbd5e1;
-            border-radius: 6px;
+            border-radius: 8px;
             font-size: 14px;
             transition: all 0.2s;
             box-sizing: border-box;
+            color: var(--primary-dark);
         }
 
         input:focus, select:focus {
             outline: none;
-            border-color: var(--accent-color);
+            border-color: var(--primary-blue);
             box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
         }
 
         /* LOCKED FIELDS (SYSTEM KEYS) */
         .field-locked {
             background-color: var(--locked-bg);
-            color: #64748b;
+            color: #94a3b8; /* Texto más claro para indicar inactivo */
             cursor: not-allowed;
-            border-color: #e2e8f0;
-            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="%2394a3b8" viewBox="0 0 16 16"><path d="M8 1a2 2 0 0 1 2 2v4H6V3a2 2 0 0 1 2-2zm3 6V3a3 3 0 0 0-6 0v4a2 2 0 0 0-2 2v5a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2z"/></svg>');
+            border-color: var(--border-light);
+            font-weight: 500;
+            /* Icono de candado */
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="%2394a3b8" viewBox="0 0 16 16"><path d="M8 1a2 2 0 0 1 2 2v4H6V3a2 2 0 0 1 2-2zm3 6V3a3 3 0 0 0-6 0v4a2 2 0 0 0-2 2v5a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2z"/></svg>');
             background-repeat: no-repeat;
-            background-position: right 10px center;
+            background-position: right 12px center;
         }
 
         .system-id-badge {
-            font-size: 10px;
-            background: #e2e8f0;
-            padding: 2px 6px;
-            border-radius: 4px;
-            color: #64748b;
-            margin-left: 5px;
+            font-size: 11px;
+            background: var(--primary-dark);
+            padding: 3px 8px;
+            border-radius: 12px;
+            color: white;
+            margin-left: 8px;
+            font-weight: normal;
+            letter-spacing: 0.5px;
         }
 
         /* CHECKBOX GROUPS */
@@ -187,20 +191,24 @@
             display: flex;
             gap: 15px;
             flex-wrap: wrap;
-            background: #f8fafc;
-            padding: 10px;
-            border-radius: 6px;
-            border: 1px solid #e2e8f0;
+            padding: 12px;
+            border-radius: 8px;
+            border: 1px solid var(--border-light);
+            background-color: #fff;
         }
         
         .checkbox-item {
             display: flex;
             align-items: center;
-            font-size: 13px;
+            font-size: 14px;
+            cursor: pointer;
         }
         
         .checkbox-item input {
-            margin-right: 8px;
+            margin-right: 10px;
+            accent-color: var(--primary-blue);
+            width: 16px;
+            height: 16px;
         }
 
         /* UPLOAD SECTION */
@@ -208,62 +216,85 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 12px;
-            border: 1px solid #e2e8f0;
-            border-radius: 6px;
-            margin-bottom: 10px;
-            background: white;
+            padding: 15px;
+            border: 2px dashed var(--border-light); /* Borde punteado para indicar zona de carga */
+            border-radius: 8px;
+            margin-bottom: 12px;
+            background: #fcfdfe;
+            transition: all 0.2s;
+        }
+
+        .upload-row:hover {
+            border-color: var(--primary-blue);
+            background: #f0f7ff;
         }
 
         .upload-label {
             font-size: 14px;
-            font-weight: 500;
+            font-weight: 600;
+            color: var(--primary-dark);
+            display: flex;
+            align-items: center;
+        }
+        
+        .upload-icon-placeholder {
+            margin-right: 10px;
+            font-size: 18px;
+            color: var(--primary-blue);
         }
 
         .upload-btn {
-            background-color: #f1f5f9;
-            color: #334155;
-            padding: 6px 12px;
-            border-radius: 4px;
-            font-size: 12px;
-            border: 1px solid #cbd5e1;
+            background-color: white;
+            color: var(--primary-blue);
+            padding: 8px 16px;
+            border-radius: 6px;
+            font-size: 13px;
+            font-weight: 600;
+            border: 1px solid var(--primary-blue);
             cursor: pointer;
             transition: 0.2s;
         }
 
         .upload-btn:hover {
-            background-color: #e2e8f0;
-            border-color: #94a3b8;
+            background-color: var(--primary-blue);
+            color: white;
         }
 
         /* BUTTON */
         .submit-container {
-            margin-top: 30px;
+            margin-top: 40px;
             text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid var(--border-light);
         }
 
         .btn-submit {
-            background-color: var(--accent-color);
+            background-color: var(--primary-blue);
             color: white;
             border: none;
-            padding: 15px 40px;
+            padding: 16px 48px;
             font-size: 16px;
-            font-weight: 600;
-            border-radius: 6px;
+            font-weight: 700;
+            border-radius: 8px;
             cursor: pointer;
-            box-shadow: 0 4px 6px -1px rgba(37, 99, 235, 0.3);
-            transition: transform 0.1s;
+            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.4);
+            transition: all 0.2s;
         }
 
         .btn-submit:hover {
             background-color: #1d4ed8;
-            transform: translateY(-1px);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(37, 99, 235, 0.5);
         }
 
         @media (max-width: 600px) {
             .grid-2, .grid-3 { grid-template-columns: 1fr; }
-            .container { border-radius: 0; border: none; }
-            body { padding: 0; }
+            .container { border-radius: 0; box-shadow: none; }
+            body { padding: 0; background-color: white;}
+            .header { padding: 30px 20px; }
+            .form-content { padding: 30px 20px; }
+            .upload-row { flex-direction: column; align-items: flex-start; gap: 10px; }
+            .upload-btn { width: 100%; }
         }
     </style>
 </head>
@@ -271,13 +302,13 @@
 
 <div class="container">
     <div class="header">
-        <div class="logo-placeholder"><img src="img/logo.png" style="max-width:100%; max-height:100%;"></div>
+        <img src="img/logo.png" alt="SPI Logo" class="header-logo">
         <h1>Régimen de Medidas Mínimas Sagrilaft</h1>
         <h2>Formato de Conocimiento de Clientes</h2>
     </div>
 
     <div class="intro-text">
-        <strong>Estimado Cliente:</strong> Amablemente solicitamos revisar y actualizar la información precargada en este formato. Los campos marcados con candado corresponden a su identificación en nuestro sistema y no pueden ser modificados.
+        <strong>Estimado Cliente:</strong> Amablemente solicitamos revisar y actualizar la información precargada en este formato. Los campos marcados con candado corresponden a su identificación única en nuestro sistema y no pueden ser modificados para garantizar la integridad de los datos.
     </div>
 
     <form class="form-content" onsubmit="event.preventDefault(); alert('Simulación: Los datos se actualizarían en la fila ID 286 de Airtable.');">
@@ -289,8 +320,8 @@
                     <input type="date" value="2025-11-20">
                 </div>
                 <div class="form-group">
-                    <label>ID Sistema (Interno) <span class="system-id-badge">Wo-286</span></label>
-                    <input type="text" value="286" class="field-locked" readonly title="Primary Key en Airtable">
+                    <label style="display: flex; align-items: center;">ID Sistema (Interno) <span class="system-id-badge">Primary Key: 286</span></label>
+                    <input type="text" value="286" class="field-locked" readonly title="Este campo es la llave primaria en la base de datos y no debe modificarse.">
                 </div>
                 <div class="form-group">
                     <label>Código Formato</label>
@@ -326,7 +357,7 @@
             <div class="grid-2">
                 <div class="form-group">
                     <label>Razón Social / Nombre Completo</label>
-                    <input type="text" value="MUNDO ESPUMAS SAS">
+                    <input type="text" value="MUNDO ESPUMAS SAS" style="font-weight: 600;">
                 </div>
                 <div class="form-group">
                     <label>Tipo de Identificación</label>
@@ -340,12 +371,12 @@
 
             <div class="grid-2">
                 <div class="form-group">
-                    <label>Número de Identificación <span class="system-id-badge">Bloqueado</span></label>
-                    <input type="text" value="830104201" class="field-locked" readonly>
+                    <label>Número de Identificación <span style="color: #ef4444; font-size: 11px;">(No editable)</span></label>
+                    <input type="text" value="830104201" class="field-locked" readonly style="font-weight: 700; letter-spacing: 1px;">
                 </div>
                 <div class="form-group">
                     <label>Dígito Verificación</label>
-                    <input type="text" value="2" class="field-locked" readonly style="width: 50px;">
+                    <input type="text" value="2" class="field-locked" readonly style="width: 60px; text-align: center;">
                 </div>
             </div>
 
@@ -413,45 +444,50 @@
                 <div class="section-number">III</div>
                 <div class="section-title">Anexos Requeridos</div>
             </div>
-            <p style="font-size: 13px; color: #64748b; margin-bottom: 20px;">
-                Por favor cargue los documentos vigentes. Si ya los envió recientemente y están vigentes, puede omitir la carga.
+            <p style="font-size: 14px; color: var(--text-body); margin-bottom: 25px; background: #f1f5f9; padding: 15px; border-radius: 8px;">
+                <strong>Instrucciones:</strong> Por favor cargue los documentos vigentes en formato PDF. Si el documento ya fue enviado recientemente y sigue vigente, no es necesario cargarlo nuevamente.
             </p>
 
             <div class="upload-row">
-                <div class="upload-label">1. Certificado Cámara de Comercio (< 30 días)</div>
-                <button type="button" class="upload-btn">📄 Seleccionar Archivo</button>
+                <div class="upload-label"><span class="upload-icon-placeholder">📄</span>1. Certificado Cámara de Comercio (< 30 días)</div>
+                <button type="button" class="upload-btn">Seleccionar Archivo</button>
             </div>
 
             <div class="upload-row">
-                <div class="upload-label">2. Copia del RUT (Actualizado)</div>
-                <button type="button" class="upload-btn">📄 Seleccionar Archivo</button>
+                <div class="upload-label"><span class="upload-icon-placeholder">📄</span>2. Copia del RUT (Actualizado)</div>
+                <button type="button" class="upload-btn">Seleccionar Archivo</button>
             </div>
 
             <div class="upload-row">
-                <div class="upload-label">3. Copia Cédula Rep. Legal</div>
-                <button type="button" class="upload-btn">📄 Seleccionar Archivo</button>
+                <div class="upload-label"><span class="upload-icon-placeholder">🆔</span>3. Copia Cédula Rep. Legal</div>
+                <button type="button" class="upload-btn">Seleccionar Archivo</button>
             </div>
 
             <div class="upload-row">
-                <div class="upload-label">4. Estados Financieros (Último año fiscal)</div>
-                <button type="button" class="upload-btn">📄 Seleccionar Archivo</button>
+                <div class="upload-label"><span class="upload-icon-placeholder">📊</span>4. Estados Financieros (Último año fiscal)</div>
+                <button type="button" class="upload-btn">Seleccionar Archivo</button>
             </div>
 
             <div class="upload-row">
-                <div class="upload-label">5. Declaración de Renta (Último año)</div>
-                <button type="button" class="upload-btn">📄 Seleccionar Archivo</button>
+                <div class="upload-label"><span class="upload-icon-placeholder">📑</span>5. Declaración de Renta (Último año)</div>
+                <button type="button" class="upload-btn">Seleccionar Archivo</button>
             </div>
 
             <div class="upload-row">
-                <div class="upload-label">6. Certificación Bancaria (< 90 días)</div>
-                <button type="button" class="upload-btn">📄 Seleccionar Archivo</button>
+                <div class="upload-label"><span class="upload-icon-placeholder">🏦</span>6. Certificación Bancaria (< 90 días)</div>
+                <button type="button" class="upload-btn">Seleccionar Archivo</button>
+            </div>
+
+             <div class="upload-row">
+                <div class="upload-label"><span class="upload-icon-placeholder">👥</span>7. Referencias Comerciales (Opcional)</div>
+                <button type="button" class="upload-btn">Seleccionar Archivo</button>
             </div>
         </div>
 
         <div class="submit-container">
             <button type="submit" class="btn-submit">Validar y Actualizar Información</button>
-            <p style="font-size: 12px; color: #94a3b8; margin-top: 15px;">
-                Al hacer clic, certifico que la información suministrada es veraz y autorizo su tratamiento conforme a la política de datos de SPI SAS.
+            <p style="font-size: 12px; color: #94a3b8; margin-top: 20px; max-width: 600px; margin-left: auto; margin-right: auto;">
+                Al hacer clic en el botón, certifico que la información suministrada es veraz, completa y autorizo su tratamiento conforme a la política de protección de datos de SPI SAS.
             </p>
         </div>
 
